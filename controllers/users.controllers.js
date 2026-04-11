@@ -22,6 +22,14 @@ export const getUserById = async (req, res) => {
     where: {
       id: id,
     },
+    include: {
+      profiles: {
+        select: {
+          address: true,
+          phone: true,
+        }
+      }
+    }
   })
 
   // Jika user tidak ditemukan, kirimkan pesan error
